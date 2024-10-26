@@ -27,6 +27,8 @@ def main():
 	player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
 	
 	dt = 0
+	seconds = 0
+	kill_count = 0
 
 	while True:
 		for event in pygame.event.get():
@@ -39,17 +41,23 @@ def main():
 		for asteroid in asteroids:
 			if asteroid.collision(player):
 				print ("Game Over!")
+				print (f"Time: {round(seconds)}")
+				print (f"Kills: {kill_count}")
+				print(f"Score: {kill_count * round(seconds)}")
 				sys.exit()
 
 			for shot in shots:
 				if shot.collision(asteroid):
 					asteroid.split()
 					shot.kill()
+					kill_count += 1
 
 		screen.fill("black")
 		
 		for obj in drawable:
 			obj.draw(screen)
+		
+		seconds += dt
 		
 		pygame.display.flip()
 		
