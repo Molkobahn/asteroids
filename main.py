@@ -27,6 +27,7 @@ def main():
 	player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
 	
 	dt = 0
+	minutes = 0
 	seconds = 0
 	kill_count = 0
 
@@ -41,7 +42,7 @@ def main():
 		for asteroid in asteroids:
 			if asteroid.collision(player):
 				print ("Game Over!")
-				print (f"Time: {round(seconds)}")
+				print (f"Time: {round(seconds)} seconds")
 				print (f"Kills: {kill_count}")
 				print(f"Score: {kill_count * round(seconds)}")
 				sys.exit()
@@ -57,7 +58,7 @@ def main():
 		for obj in drawable:
 			obj.draw(screen)
 		
-		seconds += dt
+		seconds += clock.get_time() / 1000
 		
 		pygame.display.flip()
 		
