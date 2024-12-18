@@ -27,7 +27,6 @@ def main():
 	player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
 	
 	dt = 0
-	minutes = 0
 	seconds = 0
 	kill_count = 0
 
